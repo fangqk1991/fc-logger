@@ -24,6 +24,11 @@ export class WriteLogMiddlewareBuilder {
     return this
   }
 
+  public skipUrl(url: string) {
+    this._skippingUris[url] = true
+    return this
+  }
+
   public build() {
     /**
      * @description 请确保 ctx.logger 已被赋予 Logger 对象
