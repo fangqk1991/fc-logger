@@ -192,6 +192,11 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@fangcha/app-error@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@fangcha/app-error/-/app-error-1.2.0.tgz#b0e4c0cf440ec898928de21cc696c0b4f880e8e7"
+  integrity sha512-pY+K7hNHQRriT/ludbxhdNfR4sV4jb+dV+K45pWwIEeDCw0McZD5pO0bCUWnj66ltT21v2FExHxT+p7Vq5ycFA==
+
 "@fangcha/eslint@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@fangcha/eslint/-/eslint-0.2.0.tgz#aca6b6a1e57fd4fb0de809bad38bfdcc7f1baec2"

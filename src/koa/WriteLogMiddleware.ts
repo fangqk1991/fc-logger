@@ -1,4 +1,5 @@
 import { Context } from 'koa'
+import { AppException } from '@fangcha/app-error'
 
 type NormalHandler = (ctx: Context) => void | Promise<void>
 type ErrorHandler = (ctx: Context, err: Error) => void | Promise<void>
@@ -55,7 +56,9 @@ export class WriteLogMiddlewareBuilder {
       } catch (err: any) {
         ctx.status = err.statusCode || 500
         ctx.body = err.message
-
+        if (err.name === AppException.name) {
+          ctx.body = (err as AppException).errorBody
+        }
         const { method, url, hostname } = ctx.request
         ctx.duration = Date.now() - start
 
