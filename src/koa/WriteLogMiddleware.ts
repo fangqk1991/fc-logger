@@ -1,5 +1,5 @@
 import { Context } from 'koa'
-import { AppException } from '@fangcha/app-error'
+import { AppException, RedirectBreak } from '@fangcha/app-error'
 
 type NormalHandler = (ctx: Context) => void | Promise<void>
 type ErrorHandler = (ctx: Context, err: Error) => void | Promise<void>
@@ -58,6 +58,8 @@ export class WriteLogMiddlewareBuilder {
         ctx.body = err.message
         if (err.name === AppException.name) {
           ctx.body = (err as AppException).errorBody
+        } else if (err.name === RedirectBreak.name) {
+          ctx.redirect((err as RedirectBreak).redirectUri)
         }
         const { method, url, hostname } = ctx.request
         ctx.duration = Date.now() - start
